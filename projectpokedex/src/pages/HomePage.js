@@ -8,14 +8,14 @@ function HomePage() {
     const [pokemonCards, setPokemonCards] = useState([]);
 
     useEffect(() => {
+        const fetchData = async (url) => {
+            const response = await axios.get(url);
+            setOriginalData(response.data.results);
+            console.log(response.data.results)
+        };
         fetchData(file.pokemon_list);
     }, []);
 
-    const fetchData = async (url) => {
-        const response = await axios.get(url);
-        setOriginalData(response.data.results);
-        console.log(response.data.results)
-    };
 
     return (
         <div className='row home-row'>
