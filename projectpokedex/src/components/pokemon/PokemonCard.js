@@ -6,8 +6,8 @@ const PokemonCard = ({ name, id }) => {
     const pokemonUrl = `/pokemon/${pokemonId}`;
 
     return (
-        <div className="card">
-            <a href={pokemonUrl}>
+        <div className="card total-card">
+            <a href={pokemonUrl} className='lien-pokemon'>
                 <img src={imageUrl} className="card-img-top" alt={`${name} sprite`} />
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
