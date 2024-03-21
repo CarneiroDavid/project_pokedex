@@ -17,19 +17,13 @@ function HomePage() {
         console.log(response.data.results)
     };
 
-    useEffect(() => {
-        const cards = originalData.map((pokemon) => (
-            <PokemonCard 
-                name={pokemon.name}
-                id={pokemon.url}
-            />
-        ));
-        setPokemonCards(cards);
-    }, [originalData]);
-
     return (
         <div className='row home-row'>
-            {/* {pokemonCards} */}
+            {originalData.map((pokemon, index) => (<PokemonCard
+                key = { index }
+                name = {pokemon.name}
+                id = {pokemon.url}
+            />))}
         </div>
     );
 }
