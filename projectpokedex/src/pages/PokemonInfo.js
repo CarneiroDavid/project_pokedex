@@ -11,9 +11,8 @@ function PokemonInfo() {
             try {
                 const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
                 setPokemonInfo(response.data);
-                console.log(response.data);
             } catch (error) {
-                console.error('Error fetching Pokemon info:', error);
+                console.error('Erreur de récupération:', error);
             }
         };
 

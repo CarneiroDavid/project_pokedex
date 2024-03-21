@@ -1,0 +1,13 @@
+.lien-pokemon{
+    text-decoration: none;
+    color: inherit;
+}
+
+.total-card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.total-card:hover {
+    transform: scale(1.1); /* Augmente la taille de la carte de 10% lors du survol */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
