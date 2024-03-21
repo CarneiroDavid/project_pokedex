@@ -1,20 +1,22 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomePage from '../pages/HomePage';
-import Layout from '../layout/layout'; // Assurez-vous d'importer Layout correctement
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import HomePage from '../pages/HomePage'
+import PokemonInfo from '../pages/PokemonInfo'
+import Layout from '../layout/layout'
 
-const Routeur = () => { // Supprimez le texte non utilisé du composant Routeur
+
+const Routeur = ({ text }) => {
     return (
         <Router>
             <div className='App'>
                 <Layout>
                     <Routes>
                         <Route exact path='/' element={<HomePage />} />
+                        <Route path='pokemon/:id' element={<PokemonInfo />} />
                     </Routes>
                 </Layout>
             </div>
         </Router>
-    );
+    )
 }
 
-export default Routeur;
+export default Routeur
