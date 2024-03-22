@@ -8,6 +8,9 @@ function Navigation() {
                     <NavLink className='nav-item nav-link' to='/'>
                         Accueil
                     </NavLink>
+                    <NavLink className='nav-item nav-link' to='/pokedex'>
+                        Pokedex
+                    </NavLink>
                 </div>
             </div>
         </nav>
