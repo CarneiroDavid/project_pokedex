@@ -11,7 +11,7 @@ const PokemonCard = ({ name, id }) => {
                 <img src={imageUrl} className="card-img-top" alt={`${name} sprite`} />
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
-                    <p>ID: {pokemonId}</p>
+                    <p>N° {pokemonId}</p>
                 </div>
             </a>
         </div>

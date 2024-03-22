@@ -5,16 +5,15 @@ import PokemonCard from '../components/pokemon/PokemonCard';
 
 function HomePage() {
     const [originalData, setOriginalData] = useState([]);
-    const [displayedData, setDisplayedData] = useState([]);
+    const [pokemonAffichee, setDisplayedData] = useState([]);
     const [nbPokemonAfficher, setNbPokemon] = useState(151);
     const [recherche, recherchePokemon] = useState('');
 
     // Récupération des pokémons
     useEffect(() => {
-        const fetchData = async (url) => {
+        const fetchData = async (url) => {      
             const response = await axios.get(url);
             setOriginalData(response.data.results);
-            console.log(response.data.results);
             setDisplayedData(response.data.results.slice(0, nbPokemonAfficher));
         };
         fetchData(file.pokemon_list);
@@ -33,9 +32,13 @@ function HomePage() {
         setNbPokemon(prevCount => prevCount + 50);
     };
 
+   
+
     return (
         <div className='row home-row'>
+            
             <h1 className="text-center">Liste Pokémon</h1>
+            
             <input
                 type="text"
                 className='form-control'
@@ -43,7 +46,14 @@ function HomePage() {
                 value={recherche}
                 onChange={(e) => recherchePokemon(e.target.value)}
             />
-            {displayedData.map((pokemon, index) => (
+            
+            {/* nb pokémon */}
+            <p className='mt-4'>Nombre de Pokémon affichés : {pokemonAffichee.length}</p>
+            {pokemonAffichee.length === 0 && (
+                <p className="text-center">Aucun Pokémon trouvé.</p>
+            )}
+            {/* Affichage des pokemons */}
+            {pokemonAffichee.map((pokemon, index) => (
                 <div key={index} className="col-lg-3 col-md-4 col-sm-6 mt-4 ">
                     <PokemonCard
                         name={pokemon.name}
@@ -51,9 +61,16 @@ function HomePage() {
                     />
                 </div>
             ))}
-            {originalData.length > nbPokemonAfficher && (
-                <button onClick={rechargePokemon}>Charger plus de Pokémon</button>
-            )}
+
+            <div className='text-center'>
+                {/* Condition pour retirer le bouton quand recherche fini */}
+                {originalData.length > nbPokemonAfficher && originalData.filter(pokemon =>
+                    pokemon.name.toLowerCase().includes(recherche.toLowerCase())
+                ).length > nbPokemonAfficher && (
+                    <button className="btn btn-primary mt-4 w-50" onClick={rechargePokemon}>Charger plus de Pokémon</button>
+                )}
+            </div>
+            
         </div>
     );
 }
